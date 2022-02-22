@@ -15,7 +15,7 @@ from mcr_toolkit.dataset_tools import create_mysql_db_engine
 # Data Manipulation
 
 ## Fetch data
-mysql = create_mysql_db_engine('raw_sonet', './config/config.json')
+mysql = create_mysql_db_engine('store_sonet', './config/config.json')
 tables = ['baseline','hhmembers','households','labreqfield']
 
 df = dict()
@@ -143,7 +143,7 @@ screening_cards = [create_card(title, data) for title, data in zip(card_titles, 
 #### Screened over time
 over_time_fig = px.line(x=df_baseline_date['starttime'],
                         y=df_baseline_date['one'].cumsum(),
-                        labels={'vdate':'Date', 'y':'Total Screened'},
+                        labels={'vdate':'Date', 'x':'Date', 'y':'Total Screened'},
                         title="Total Screened Over Time")
 over_time_graph = dcc.Graph(figure=over_time_fig)
 
